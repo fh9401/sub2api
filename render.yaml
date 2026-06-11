@@ -1,0 +1,49 @@
+services:
+  - type: web
+    name: sub2api
+    runtime: image
+    image:
+      url: weishaw/sub2api:latest
+    envVars:
+      - key: AUTO_SETUP
+        value: "true"
+      - key: SERVER_MODE
+        value: "release"
+      - key: GIN_MODE
+        value: "release"
+      # 数据库配置（使用你现有的 Render PostgreSQL）
+      - key: DATABASE_HOST
+        value: dpg-d8jrlgs8aovs73dcso3g-a
+      - key: DATABASE_PORT
+        value: "5432"
+      - key: DATABASE_USER
+        value: sub2api_db_k8l6_user
+      - key: DATABASE_PASSWORD
+        value: HPMhnxVw59IysTb7ZvXR4eS5X6pBZGzf
+      - key: DATABASE_DBNAME
+        value: sub2api_db_k8l6
+      - key: DATABASE_SSLMODE
+        value: "require"
+      # Redis 配置（使用你现有的 Upstash Redis）
+      - key: REDIS_HOST
+        value: notable-poodle-78383.upstash.io
+      - key: REDIS_PORT
+        value: "6379"
+      - key: REDIS_PASSWORD
+        value: gQAAAAAAATIvAAIgcDFlNTQzZDI5Zjg3MDc0NTA5YWI0ZTYwNDBlNTE3MTZjMg
+      - key: REDIS_ENABLE_TLS
+        value: "true"
+      # 管理员账号
+      - key: ADMIN_EMAIL
+        value: "787408837@qq.com"
+      - key: ADMIN_PASSWORD
+        value: "Asd.1477"
+      # 固定密钥
+      - key: JWT_SECRET
+        value: a7f3e9d2c5b8f4a1e6d9c2b7f5a3e8d1c4b6f9e2d7a5c3f8b1e4d7c2a6f9e3d8b5
+      - key: TOTP_ENCRYPTION_KEY
+        value: e8b5d2f7c4a1e6d9b3f8c5a2e7d4b1f6c9e3d8a5f2b7c4e1d6a9f3c8b5e2d7a4f1
+      # 其他配置
+      - key: TZ
+        value: Asia/Shanghai
+    healthCheckPath: /health
