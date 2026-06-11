@@ -5,45 +5,45 @@ services:
     image:
       url: weishaw/sub2api:latest
     envVars:
-      - key: AUTO_SETUP
-        value: "true"
-      - key: SERVER_MODE
-        value: "release"
-      - key: GIN_MODE
-        value: "release"
-      # 数据库配置（使用你现有的 Render PostgreSQL）
-      - key: DATABASE_HOST
+      # 数据库配置
+      - key: DB_HOST
         value: dpg-d8jrlgs8aovs73dcso3g-a
-      - key: DATABASE_PORT
+      - key: DB_PORT
         value: "5432"
-      - key: DATABASE_USER
+      - key: DB_USER
         value: sub2api_db_k8l6_user
-      - key: DATABASE_PASSWORD
+      - key: DB_PASSWORD
         value: HPMhnxVw59IysTb7ZvXR4eS5X6pBZGzf
-      - key: DATABASE_DBNAME
+      - key: DB_NAME
         value: sub2api_db_k8l6
-      - key: DATABASE_SSLMODE
-        value: "require"
-      # Redis 配置（使用你现有的 Upstash Redis）
+      - key: DB_SSL_MODE
+        value: require
+      
+      # Redis 配置
       - key: REDIS_HOST
         value: notable-poodle-78383.upstash.io
       - key: REDIS_PORT
         value: "6379"
       - key: REDIS_PASSWORD
         value: gQAAAAAAATIvAAIgcDFlNTQzZDI5Zjg3MDc0NTA5YWI0ZTYwNDBlNTE3MTZjMg
-      - key: REDIS_ENABLE_TLS
+      - key: REDIS_SSL
         value: "true"
+      
       # 管理员账号
       - key: ADMIN_EMAIL
         value: "787408837@qq.com"
       - key: ADMIN_PASSWORD
         value: "Asd.1477"
-      # 固定密钥
+      
+      # ========== 密钥配置 ==========
       - key: JWT_SECRET
         value: a7f3e9d2c5b8f4a1e6d9c2b7f5a3e8d1c4b6f9e2d7a5c3f8b1e4d7c2a6f9e3d8b5
-      - key: TOTP_ENCRYPTION_KEY
-        value: e8b5d2f7c4a1e6d9b3f8c5a2e7d4b1f6c9e3d8a5f2b7c4e1d6a9f3c8b5e2d7a4f1
-      # 其他配置
-      - key: TZ
-        value: Asia/Shanghai
-    healthCheckPath: /health
+      
+      - key: TOTP_ENCRYPTION_KEY     # 👈 这就是你要找的配置项
+        value: f3a8e2d1b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3   # 👈 用我给你的新密钥
+      
+      # 运行模式
+      - key: GIN_MODE
+        value: release
+      - key: AUTO_SETUP
+        value: "true"
