@@ -5,7 +5,7 @@ services:
     image:
       url: weishaw/sub2api:latest
     envVars:
-      # 数据库配置
+      # 数据库
       - key: DB_HOST
         value: dpg-d8jrlgs8aovs73dcso3g-a
       - key: DB_PORT
@@ -19,7 +19,7 @@ services:
       - key: DB_SSL_MODE
         value: require
       
-      # Redis 配置
+      # Redis
       - key: REDIS_HOST
         value: notable-poodle-78383.upstash.io
       - key: REDIS_PORT
@@ -29,18 +29,19 @@ services:
       - key: REDIS_SSL
         value: "true"
       
-      # 管理员账号
+      # 管理员
       - key: ADMIN_EMAIL
         value: "787408837@qq.com"
       - key: ADMIN_PASSWORD
         value: "Asd.1477"
       
-      # ========== 密钥配置 ==========
+      # 密钥
       - key: JWT_SECRET
         value: a7f3e9d2c5b8f4a1e6d9c2b7f5a3e8d1c4b6f9e2d7a5c3f8b1e4d7c2a6f9e3d8b5
       
-      - key: TOTP_ENCRYPTION_KEY     # 👈 这就是你要找的配置项
-        value: f3a8e2d1b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3   # 👈 用我给你的新密钥
+      # 禁用两步验证（避免密钥长度问题）
+      - key: TOTP_ENABLED
+        value: "false"
       
       # 运行模式
       - key: GIN_MODE
