@@ -18,7 +18,6 @@ services:
         value: sub2api_db_k8l6
       - key: DB_SSL_MODE
         value: require
-      
       # Redis
       - key: REDIS_HOST
         value: notable-poodle-78383.upstash.io
@@ -28,22 +27,12 @@ services:
         value: gQAAAAAAATIvAAIgcDFlNTQzZDI5Zjg3MDc0NTA5YWI0ZTYwNDBlNTE3MTZjMg
       - key: REDIS_SSL
         value: "true"
-      
       # 管理员
       - key: ADMIN_EMAIL
         value: "787408837@qq.com"
       - key: ADMIN_PASSWORD
         value: "Asd.1477"
-      
-      # 密钥
-      - key: JWT_SECRET
-        value: a7f3e9d2c5b8f4a1e6d9c2b7f5a3e8d1c4b6f9e2d7a5c3f8b1e4d7c2a6f9e3d8b5
-      
-      # 禁用两步验证（避免密钥长度问题）
-      - key: TOTP_ENABLED
-        value: "false"
-      
-      # 运行模式
+      # 运行模式（不再设置任何 TOTP 相关的 key）
       - key: GIN_MODE
         value: release
       - key: AUTO_SETUP
